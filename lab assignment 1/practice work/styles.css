@@ -1,0 +1,27 @@
+table{
+    width: 25em;
+text-align: center;
+border: 1px solid black;
+border-collapse: separate;
+border-spacing: 0;
+border-radius: 0.6em;
+overflow:hidden;
+    
+}
+th{
+    background-color: rgb(26, 10, 69);    
+color: antiquewhite;
+
+border-collapse: separate;
+border-spacing: 0;
+
+}
+
+table:hover{
+    color: rgb(123, 122, 87);
+    font-size: 1.2em;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #d9d3d3;
+}
