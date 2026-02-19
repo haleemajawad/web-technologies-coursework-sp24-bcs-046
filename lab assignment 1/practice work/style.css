@@ -1,0 +1,22 @@
+div{
+    background-color: pink;
+    
+}
+#parent{
+background-color: yellow;
+border: 3px solid black;
+height: 1500px;
+
+}
+#one{
+background-color: green;
+position: sticky;
+top: 10px;
+
+}
+#two{
+background-color: red;
+}
+#three{
+background-color: blue;
+}

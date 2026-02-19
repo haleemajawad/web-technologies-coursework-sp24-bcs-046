@@ -25,3 +25,19 @@ table:hover{
 tbody tr:nth-child(even) {
   background-color: #d9d3d3;
 }
+body{
+    background-color: rgb(210, 10, 10);
+}
+
+div{
+    margin: auto;
+    width: 60%;
+    border: 3px solid black;
+ 
+}
+img{
+    width: 33%;
+}
+img:hover{
+transform: scale(1.05);
+}

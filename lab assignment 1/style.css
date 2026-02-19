@@ -1,11 +1,173 @@
 
-h1 {
-    color: rgb(255, 255, 255);
-    font-family: Montserrat, sans-serif;
-    font-weight: 800;
-    text-align: left;
-    letter-spacing: 7px;}
+h1,h2,h3,h4,h5,p,li,a{
+    font-family: Montserrat, sans-serif;;
+}
+
+span {
+       color: rgb(255, 255, 255);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 795;
+    letter-spacing: 6.5px;
+    font-size: 2.7em;
+    margin-left: 35px;
+    
+}
+#menuicon{
+    position: relative;
+top: 5px;
+left: 19px;
+}
+
+    
 
     .smallicons{
-width: 30px;
+
+width: 40px;
+    
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
     }
+
+    body{
+          margin: 0;
+  padding: 0;
+    }
+    .menu{
+       background-image: url("https://cdn.shopify.com/s/files/1/0027/2596/9964/files/ayeza_slider.webp?v=1770880763.webp");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    top: 0px;
+    height: 40em;
+    width: 100%;
+    
+    }
+
+ 
+  .navbar-left{
+    
+    float: left;
+    width: 50%;
+    margin-top: 8px;
+     
+
+  }
+
+
+.navbar-right{
+      
+    float: right;
+    width: 30%;
+   
+}
+.navbar-right img{
+    float: right;
+    padding: 15px;
+    
+}
+.navbar-bottom li{
+    float: left;
+margin-left: 21px;
+
+  color: rgb(255, 255, 255);
+  
+    font-weight: 300;
+    
+    letter-spacing: 2px;
+    font-size: 1em;
+    list-style:none;
+
+    
+}
+#woman{
+    text-decoration: underline;
+     text-underline-offset: 6px;
+}
+
+.navbar-bottom{
+    float: left;
+    margin-left: 20px;
+
+}
+.info-eid{
+text-align: center;
+    position: relative;
+    bottom: 170px;
+}
+.info-eid p{
+    
+    
+    color: rgb(255, 255, 255);
+    
+    font-weight: 540;
+    
+    letter-spacing: 1px;
+    font-size: 1.4em;
+    
+}
+.info-eid .shop-now-btn{
+      font-size: 1em;
+    font-weight: 300;
+     color: rgb(255, 255, 255);
+   
+    
+    letter-spacing: 2px;
+    font-size: 1em;
+     text-decoration: underline;
+     text-underline-offset: 6px;
+}
+.p1{
+        text-align: justify;
+    margin: 50px;
+    float: left;
+    width: 25%;
+    line-height: 25px;
+   
+}
+
+ #small-shop-now{
+    font-size: 0.5em;
+    color: black;
+    
+    font-weight: 200;
+   
+
+    
+    letter-spacing: 2px;
+    font-size: 1em;
+     text-decoration: underline;
+     text-underline-offset: 6px;
+}
+h3{
+    font-weight: 100;
+    font-size: 1.2em;
+}
+h2{
+     font-weight: 500;
+    font-size: 3em;
+
+}
+.p1 p{
+    font-size:1.2em;
+    letter-spacing: 1px;
+    color: rgb(54, 50, 50);
+}
+
+
+    
+.container{
+       float: left;
+    text-align: center;
+    width: 20%;
+    margin-right: 2px;
+ 
+}
+#secondpage{
+    margin-bottom: 50px;
+}
+.container img{
+    width: 100%;      
+    height: auto;
+    margin: 0 auto; 
+}
