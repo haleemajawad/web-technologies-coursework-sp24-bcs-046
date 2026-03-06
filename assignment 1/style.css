@@ -54,7 +54,9 @@ width: 40px;
 
   }
 
-
+.navbar{
+    position: relative;
+}
 .navbar-right{
       
     float: right;
@@ -91,20 +93,21 @@ margin-left: 21px;
 
 }
 .info-eid{
-text-align: center;
+    left: 510px;
+    text-align: center;
     position: absolute;
-    top: 390px;
-    left: 500px;
+    left: 600px;
+    bottom: 20px;
+    padding: 0;
 }
+
 .info-eid p{
-    
-    
+    margin: 15px;
+    padding: 0;
     color: rgb(255, 255, 255);
     
-    font-weight: 540;
-    
-    letter-spacing: 1px;
-    font-size: 1.4em;
+    font-weight: 400;
+    font-size: 1.5em;
     
 }
 .info-eid .shop-now-btn{
