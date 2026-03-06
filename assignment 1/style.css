@@ -1,6 +1,6 @@
 
 h1,h2,h3,h4,h5,p,li,a{
-    font-family: Montserrat, sans-serif;;
+    font-family: Montserrat, sans-serif;
 }
 
 span {
@@ -12,7 +12,7 @@ span {
     margin-left: 35px;
     
 }
-#menuicon{
+#icon{
     position: relative;
 top: 5px;
 left: 19px;
@@ -33,7 +33,7 @@ width: 40px;
           margin: 0;
   padding: 0;
     }
-    .menu{
+    .firstpage{
        background-image: url("https://cdn.shopify.com/s/files/1/0027/2596/9964/files/ayeza_slider.webp?v=1770880763.webp");
     background-size: cover;
     background-position: center;
@@ -419,4 +419,36 @@ padding: 30px;
     height: 20%;
     margin-top: 20px;
     margin-left: 12px;
+}
+@media (max-width:1200px) {
+    #womenul{
+        display: none;
+
+    }
+  
+    
+}
+#navbar::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+#menu{
+    display: none;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 700px;
+    height: 700px;
+}
+#menu li,a{
+color: rgb(33, 33, 33);
+font-size:1.2em;
+line-height: 3em;
+font-weight: 100;
+text-decoration: none;
+list-style: none;
+}
+#menu img{
+width: 500px;
 }
