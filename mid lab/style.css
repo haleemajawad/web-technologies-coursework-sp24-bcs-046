@@ -126,7 +126,7 @@ body {
 }
 .p1 {
   text-align: justify;
-  margin-top: 0;
+  margin-top: 100px;
   margin-left: 50px;
   margin-right: 50px;
   float: left;
@@ -186,8 +186,9 @@ h4 {
   font-weight: 600;
 }
 #secondpage {
-  margin-bottom: 50px;
-  margin-top: 90px;
+  margin-bottom: 10px;
+  margin-top: 40px;
+ background-color: rgba(248, 247, 247, 0.911);
 }
 #secondpage::after {
   content: "";
