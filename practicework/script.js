@@ -24,15 +24,16 @@ const div=document.createElement("div");
 const li2=document.createElement("li");
 li2.innerText=value;
 const del=document.createElement("button");
-del.innerText="deconste";
-
+del.innerText="delete";
+del.id = "deleteButton";
 div.appendChild(li2);
 div.appendChild(del);
 ul2.appendChild(div);
 
-input.value="";
-del.addEventListener("click",function(){
-    ul2.removeChild(div);
+input.value = "";
+ul2.addEventListener("click", function(e) {
+    if (e.target.id === "deleteButton") {
+        ul2.removeChild(e.target.parentElement);
+    }
 });
-
 });
