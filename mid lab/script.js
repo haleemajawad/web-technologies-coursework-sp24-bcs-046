@@ -16,9 +16,6 @@
         womenul.classList.remove("disappear");
     });
 
-    
-
-
 
   $(document).ready(function () {
 
