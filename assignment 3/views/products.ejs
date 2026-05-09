@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Sapphire</title>
+  <link rel="stylesheet" href="/css/products.css">
+</head>
+<body>
+
+  <div id="navbar">
+    <div class="navbar-left">
+      <div class="navbar-left-items">
+        <img src="/images/images.png" alt="Logo" class="smallicons" id="icon" />
+        <a href="/"><span id="sapphire-logo">SAPPHIRE</span></a>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <a href="#"><img src="/images/search.png" alt="Search" class="smallicons" /></a>
+      <a href="#"><img src="/images/person.png" alt="Account" class="smallicons" /></a>
+      <a href="#"><img src="/images/cart.png" alt="Cart" class="smallicons" /></a>
+    </div>
+  </div>
+
+  <div id="menu">
+    <img src="/images/sapphire logo.png" alt="Sapphire" />
+    <button id="crossmenu">X</button>
+    <ul id="womenul">
+      <a href="/products"><li>WOMEN</li></a>
+      <a href="/products"><li>MEN</li></a>
+    </ul>
+    <ul id="menu-ul">
+      <li><a href="/products">New in</a></li>
+      <li><a href="/products">Ready to wear</a></li>
+      <li><a href="/products">Unstitched</a></li>
+      <li><a href="/products">West</a></li>
+      <li><a href="/products">Sleepwear</a></li>
+      <li><a href="/products">Modest wear</a></li>
+      <li><a href="/products">Accessories</a></li>
+    </ul>
+  </div>
+
+  <div class="products-page">
+    <h1>All Products</h1>
+
+    <!-- FILTER FORM -->
+    <form method="GET" action="/products" class="filters">
+      <input
+        type="text"
+        name="search"
+        value="<%= search %>"
+        placeholder="Search by name..." />
+
+      <select name="category">
+        <option value="">All Categories</option>
+        <option value="Lawn 3-Piece" <%= category === "Lawn 3-Piece" ? "selected" : "" %>>Lawn 3-Piece</option>
+        <option value="Lawn 2-Piece" <%= category === "Lawn 2-Piece" ? "selected" : "" %>>Lawn 2-Piece</option>
+        <option value="Lawn Kurti" <%= category === "Lawn Kurti" ? "selected" : "" %>>Lawn Kurti</option>
+        <option value="Cotton 3-Piece" <%= category === "Cotton 3-Piece" ? "selected" : "" %>>Cotton 3-Piece</option>
+        <option value="Cotton Shirt" <%= category === "Cotton Shirt" ? "selected" : "" %>>Cotton Shirt</option>
+        <option value="Cotton Kurta" <%= category === "Cotton Kurta" ? "selected" : "" %>>Cotton Kurta</option>
+        <option value="Silk Shirt" <%= category === "Silk Shirt" ? "selected" : "" %>>Silk Shirt</option>
+        <option value="Suit Set" <%= category === "Suit Set" ? "selected" : "" %>>Suit Set</option>
+      </select>
+
+      <input
+        type="number"
+        name="minPrice"
+        value="<%= minPrice === 0 ? '' : minPrice %>"
+        placeholder="Min Price" />
+
+      <input
+        type="number"
+        name="maxPrice"
+        value="<%= maxPrice === 999999 ? '' : maxPrice %>"
+        placeholder="Max Price" />
+
+      <button type="submit">FILTER</button>
+      <a href="/products" style="padding: 8px 20px; border: 1px solid #ccc; text-decoration:none; color:black;">CLEAR</a>
+    </form>
+
+    <!-- PRODUCTS GRID -->
+    <% if (products.length === 0) { %>
+      <div class="no-products">
+        <p>No products found. Try a different search or filter.</p>
+      </div>
+    <% } else { %>
+      <div class="products-grid">
+        <% products.forEach(function(product) { %>
+          <div class="product-card">
+            <div class="product-image">
+              <% if (product.imageUrl) { %>
+                <img src="<%= product.imageUrl %>" alt="<%= product.name %>" />
+              <% } %>
+              <button class="add-to-cart-btn" data-title="<%= product.name %>" data-price="Rs. <%= product.price.toLocaleString() %>">Add to cart</button>
+            </div>
+            <div class="product-info">
+              <h3><%= product.name %></h3>
+              <p class="price">Rs. <%= product.price.toLocaleString() %></p>
+              <p class="category"><%= product.category %></p>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <!-- PAGINATION -->
+    <% if (totalPages > 1) { %>
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+          <a href="/products?page=<%= currentPage - 1 %>&search=<%= search %>&category=<%= category %>&minPrice=<%= minPrice %>&maxPrice=<%= maxPrice %>">
+            &laquo; Prev
+          </a>
+        <% } %>
+
+        <% for (let i = 1; i <= totalPages; i++ ) { %>
+          <a href="/products?page=<%= i %>&search=<%= search %>&category=<%= category %>&minPrice=<%= minPrice %>&maxPrice=<%= maxPrice %>"
+             class="<%= i === currentPage ? 'active' : '' %>">
+            <%= i %>
+          </a>
+        <% } %>
+
+        <% if (currentPage < totalPages) { %>
+          <a href="/products?page=<%= currentPage + 1 %>&search=<%= search %>&category=<%= category %>&minPrice=<%= minPrice %>&maxPrice=<%= maxPrice %>">
+            Next &raquo;
+          </a>
+        <% } %>
+      </div>
+    <% } %>
+
+  </div>
+
+  <footer>
+    <div class="footer">
+      <div class="cont3">
+        <h3>CONTACT US</h3>
+        <a href="mailto:wecare@sapphireonline.pk"><p>wecare@sapphireonline.pk</p></a>
+        <a href=""><p>+92(0)42 111-738-245</p></a>
+      </div>
+      <div class="cont3">
+        <h3>CUSTOMER CARE</h3>
+        <a href=""><p>EXCHANGE AND RETURN POLICY</p></a>
+        <a href=""><p>HELP</p></a>
+        <a href=""><p>CONTACT US</p></a>
+      </div>
+      <div class="cont3">
+        <h3>INFORMATION</h3>
+        <a href=""><p>ABOUT US</p></a>
+        <a href=""><p>PRIVACY POLICY</p></a>
+        <a href=""><p>PAYMENTS</p></a>
+        <a href=""><p>STORE LOCATOR</p></a>
+        <a href=""><p>FABRIC GLOSSARY</p></a>
+      </div>
+      <div class="cont3">
+        <h3>NEWSLETTER SIGNUP</h3>
+        <p>SUBSCRIBE TO OUR NEWSLETTER FOR EXCLUSIVE UPDATES</p>
+        <form action="">
+          <input type="email" placeholder="Enter your email" />
+          <button>SUBSCRIBE</button>
+        </form>
+        <div class="sm">
+          <a href=""><img src="https://www.svgrepo.com/show/494341/facebook.svg" alt="" /></a>
+          <a href=""><img src="https://icons.veryicon.com/png/o/miscellaneous/offerino-icons/instagram-53.png" alt="" /></a>
+          <a href=""><img src="https://www.iconpacks.net/icons/1/free-youtube-icon-123-thumb.png" alt="" /></a>
+          <a href=""><img src="https://www.svgrepo.com/show/473806/tiktok.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>
