@@ -443,14 +443,14 @@ h4 {
 #womenul.disappear {
   display: none;
 }
-#womenul2 {
+#menu #womenul {
   margin: 0;
   padding-left: 40px;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-#womenul2 li {
+#menu #womenul li {
   float: left;
   margin-right: 20px;
   color: rgb(0, 0, 0);
@@ -459,7 +459,7 @@ h4 {
   font-size: 1.2em;
   list-style: none;
 }
-ul #womenul2 li {
+ul #menu #womenul li {
   list-style: none;
   padding: 10px;
   color: rgb(33, 33, 33);
@@ -664,7 +664,7 @@ ul #womenul2 li {
     padding: 6px;
     width: 30%;
   }
-  #womenul2 li {
+  #womenul li {
     float: left;
     margin-right: 10px;
     color: rgb(0, 0, 0);
