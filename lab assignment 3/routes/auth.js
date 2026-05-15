@@ -64,7 +64,12 @@ try{
         else{
             req.session.user = { id: user._id, name: user.name, role: user.role };
             req.flash("success", `Welcome back, ${user.name}!`);
-            res.redirect("/");
+
+            if (user.role === "admin") {
+           res.redirect("/admin");
+          } else {
+               res.redirect("/");
+}
         }
     }
 }
@@ -75,6 +80,7 @@ catch(err){
 });
 
 router.post("/logout",function(req,res){
+     req.flash("success", "You have successfully logged out");
     req.session.destroy(function() {
     res.redirect("/login");
 });

@@ -36,6 +36,12 @@ app.use(session({
 
 // 4. FLASH AFTER SESSION
 app.use(flash());
+app.use(function(req, res,next) {
+  res.locals.currentUser = req.session.user;
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+});
 
 // 5. MULTER
 const storage = multer.diskStorage({
@@ -126,12 +132,7 @@ app.post("/admin/delete/:id", isLoggedIn, isAdmin, async function (req, res) {
   res.redirect("/admin");
 });
 
-app.use(function(req, res,next) {
-  res.locals.currentUser = req.session.user;
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
-    next();
-});
+
 app.listen(process.env.PORT, function () {
   console.log(`Server started at localhost:${process.env.PORT}`);
 });

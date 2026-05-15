@@ -18,12 +18,20 @@
           </div>
         </div>
         <div class="navbar-right">
+           <% if (currentUser) { %>
+    <form action="/logout" method="POST" style="display:inline;">
+      <span id="currentuser">Hi, <%= currentUser.name %></span>
+        <button type="submit" id="logout">Logout</button>
+    </form>
+<% } else { %>
+   <button id="login">    
+    <a href="/register" style="font-size:12px;">Login/Register</a>
+   </button>  
+<% } %>
           <a href="/products"
             ><img src="/images/search.png" alt="image2" class="smallicons"
           /></a>
-          <a href="/admin"
-            ><img src="/images/person.png" alt="image3" class="smallicons"
-          /></a>
+    
           <a href="/products"><img src="/images/cart.png" alt="image4" class="smallicons" /></a>
         </div>
 
