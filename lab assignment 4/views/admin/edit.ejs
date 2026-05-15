@@ -1,0 +1,60 @@
+<!-- Admin product edit form prefilled with existing product data -->
+<div class="form-card">
+
+  <form action="/admin/edit/<%= product._id %>" method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label>Product Name</label>
+      <input type="text" name="name" value="<%= product.name %>" required />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Price (Rs.)</label>
+        <input type="number" name="price" value="<%= product.price %>" required />
+      </div>
+      <div class="form-group">
+        <label>Stock</label>
+        <input type="number" name="stock" value="<%= product.stock %>" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Category</label>
+        <select name="category" required>
+          <option value="">Select Category</option>
+          <% const cats = ["Lawn 3-Piece","Lawn 2-Piece","Cotton Shirt","Lawn Kurti","Silk Shirt","Suit Set","Cotton 3-Piece","Cotton Kurta"]; %>
+          <% cats.forEach(function(cat) { %>
+            <option value="<%= cat %>" <%= product.category === cat ? 'selected' : '' %>>
+              <%= cat %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Rating</label>
+        <input type="number" name="rating" value="<%= product.rating %>"
+               min="1" max="5" step="0.1" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Current Image</label>
+      <% if (product.imageUrl) { %>
+        <img src="<%= product.imageUrl %>" class="img-preview" />
+      <% } else { %>
+        <p style="font-size:12px; color:#888;">No image uploaded</p>
+      <% } %>
+      <label style="margin-top:10px;">Upload New Image (optional)</label>
+      <input type="file" name="image" accept="image/*" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-black">SAVE CHANGES</button>
+      <a href="/admin" class="btn btn-white">CANCEL</a>
+    </div>
+
+  </form>
+
+</div>

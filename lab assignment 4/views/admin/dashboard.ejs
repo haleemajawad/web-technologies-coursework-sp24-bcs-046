@@ -1,0 +1,67 @@
+<!-- Admin dashboard showing summary stats and a product inventory table -->
+<!-- STATS ROW -->
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-label">Total Products</div>
+    <div class="stat-value"><%= products.length %></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Low Stock Items</div>
+    <div class="stat-value"><%= products.filter(p => p.stock < 10).length %></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Categories</div>
+    <div class="stat-value"><%= [...new Set(products.map(p => p.category))].length %></div>
+  </div>
+</div>
+
+<!-- PRODUCTS TABLE -->
+<div class="table-wrap">
+  <div class="table-header">
+    <h2>All Products</h2>
+    <a href="/admin/add" class="btn btn-black">+ ADD PRODUCT</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Stock</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.forEach(function(product) { %>
+        <tr>
+          <td>
+            <% if (product.imageUrl) { %>
+              <img src="<%= product.imageUrl %>" class="product-img-thumb" />
+            <% } else { %>
+              —
+            <% } %>
+          </td>
+          <td><%= product.name %></td>
+          <td><%= product.category %></td>
+          <td>Rs. <%= product.price.toLocaleString() %></td>
+          <td>⭐ <%= product.rating %></td>
+          <td class="<%= product.stock < 10 ? 'stock-low' : 'stock-ok' %>">
+            <%= product.stock %>
+          </td>
+          <td>
+            <div class="btn-row">
+              <a href="/admin/edit/<%= product._id %>" class="btn btn-white">EDIT</a>
+              <form action="/admin/delete/<%= product._id %>" method="POST"
+                    onsubmit="return confirm('Are you sure you want to delete this product?')">
+                <button type="submit" class="btn btn-red">DELETE</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
