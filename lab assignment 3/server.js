@@ -54,6 +54,8 @@ const upload = multer({ storage: storage });
 // 7. ROUTES LAST
 const authRoutes = require('./routes/auth');
 app.use('/', authRoutes);
+const adminRoutes = require('./routes/admin');
+app.use('/admin', adminRoutes);
 
 
 
