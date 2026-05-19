@@ -1,0 +1,139 @@
+<!-- Sales Dashboard - server-rendered stats + live jQuery polling -->
+
+<div class="sales-wrap">
+
+  <!-- Header -->
+  <div class="sales-header">
+    <h2>Sales Overview</h2>
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      <span id="lastUpdated">Live — updates every 10s</span>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+
+    <div class="kpi-card revenue">
+      <div class="kpi-icon">₨</div>
+      <div class="kpi-label">Total Revenue</div>
+      <div class="kpi-value" id="totalRevenue">Rs. <%= totalRevenue.toLocaleString() %></div>
+    </div>
+
+    <div class="kpi-card orders">
+      <div class="kpi-icon">#</div>
+      <div class="kpi-label">Total Orders</div>
+      <div class="kpi-value" id="totalOrders"><%= totalOrders %></div>
+    </div>
+
+    <div class="kpi-card top">
+      <div class="kpi-icon">★</div>
+      <div class="kpi-label">Top-Selling Product</div>
+      <div class="kpi-value" id="topProduct"><%= topProduct ? topProduct.name : 'N/A' %></div>
+    </div>
+
+    <div class="kpi-card updated">
+      <div class="kpi-icon">⟳</div>
+      <div class="kpi-label">Last Refreshed</div>
+      <div class="kpi-value" id="refreshTime">On page load</div>
+    </div>
+
+  </div>
+
+  <!-- Recent Transactions -->
+  <div class="tx-section">
+    <div class="tx-head">
+      <h3>Recent Transactions</h3>
+      <span class="tx-badge">Last 5 orders</span>
+    </div>
+
+    <% if (recentOrders.length === 0) { %>
+      <div class="empty-state">No orders found yet.</div>
+    <% } else { %>
+    <table class="tx-table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% recentOrders.forEach(function(order) { %>
+          <tr>
+            <td>
+              <span class="order-id">#<%= order._id.toString().slice(-6).toUpperCase() %></span>
+            </td>
+            <td>
+              <div class="customer-pill">
+                <div class="avatar">
+                  <%= order.userId ? order.userId.name.substring(0,2).toUpperCase() : '??' %>
+                </div>
+                <%= order.userId ? order.userId.name : 'Unknown' %>
+              </div>
+            </td>
+            <td>
+              <% if (order.productId) { %>
+                <span class="product-name"><%= order.productId.name %></span>
+              <% } else { %>
+                <span class="deleted-tag">Deleted product</span>
+              <% } %>
+            </td>
+            <td><span class="qty-chip"><%= order.quantity %></span></td>
+            <td>
+              <span class="amount-val">
+                <% if (order.productId) { %>
+                  Rs. <%= (order.productId.price * order.quantity).toLocaleString() %>
+                <% } else { %>
+                  —
+                <% } %>
+              </span>
+            </td>
+            <td>
+              <span class="date-val">
+                <%= order.createdAt ? order.createdAt.toLocaleDateString('en-PK', { day:'2-digit', month:'short', year:'numeric' }) : '—' %>
+              </span>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% } %>
+  </div>
+
+</div>
+
+<!-- jQuery + Polling -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+  $(document).ready(function () {
+
+    function fetchSalesData() {
+      $.ajax({
+        url: "/api/sales-data",
+        method: "GET",
+        success: function (data) {
+          $("#totalRevenue").text("Rs. " + Number(data.totalRevenue).toLocaleString());
+          $("#totalOrders").text(data.totalOrders);
+          $("#topProduct").text(data.topProductName);
+
+          var now = new Date();
+          var timeStr = now.toLocaleTimeString("en-PK", {
+            hour: "2-digit", minute: "2-digit", second: "2-digit"
+          });
+          $("#refreshTime").text(timeStr);
+          $("#lastUpdated").text("Live — last synced " + timeStr);
+        },
+        error: function () {
+          $("#refreshTime").text("Sync failed");
+          $("#lastUpdated").text("Retrying...");
+        }
+      });
+    }
+
+    setInterval(fetchSalesData, 10000);
+  });
+</script>

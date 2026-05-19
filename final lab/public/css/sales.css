@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap');
+
+/* ── SALES WRAPPER ── */
+.sales-wrap {
+  font-family: 'Syne', sans-serif;
+  padding: 0.5rem 0 2rem;
+  color: #1a1a1a;
+}
+
+/* ── HEADER ── */
+.sales-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.sales-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-family: 'DM Mono', monospace;
+  color: #888;
+  letter-spacing: 0.04em;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ── KPI GRID ── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* top accent bar */
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  transition: height 0.25s ease;
+}
+
+.kpi-card.revenue::before  { background: #1a1a1a; }
+.kpi-card.orders::before   { background: #6366f1; }
+.kpi-card.top::before      { background: #f59e0b; }
+.kpi-card.updated::before  { background: #22c55e; }
+
+/* hover — lift + colored glow */
+.kpi-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: #ccc;
+}
+
+.kpi-card:hover::before { height: 5px; }
+
+.kpi-card.revenue:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+.kpi-card.orders:hover  { box-shadow: 0 16px 40px rgba(99,102,241,0.18); }
+.kpi-card.top:hover     { box-shadow: 0 16px 40px rgba(245,158,11,0.18); }
+.kpi-card.updated:hover { box-shadow: 0 16px 40px rgba(34,197,94,0.18); }
+
+.kpi-icon {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.kpi-card:hover .kpi-icon {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.kpi-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 0.4rem;
+  transition: color 0.2s;
+}
+
+.kpi-card:hover .kpi-label { color: #888; }
+
+.kpi-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.1;
+  font-family: 'DM Mono', monospace;
+  transition: transform 0.2s ease;
+}
+
+.kpi-card:hover .kpi-value { transform: scale(1.04); }
+
+.kpi-card.top .kpi-value {
+  font-size: 1rem;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.kpi-card.updated .kpi-value {
+  font-size: 0.8rem;
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  color: #555;
+}
+
+/* ── TRANSACTIONS SECTION ── */
+.tx-section {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+}
+
+.tx-section:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.tx-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tx-head h3 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.tx-badge {
+  font-size: 0.68rem;
+  font-family: 'DM Mono', monospace;
+  background: #f5f5f5;
+  color: #888;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ── TABLE ── */
+.tx-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tx-table thead th {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #bbb;
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  font-family: 'DM Mono', monospace;
+}
+
+.tx-table tbody tr {
+  border-bottom: 1px solid #f7f7f7;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, border-left-color 0.2s;
+  cursor: default;
+}
+
+.tx-table tbody tr:last-child { border-bottom: none; }
+
+.tx-table tbody tr:hover {
+  background: #f9f9f9;
+  border-left-color: #1a1a1a;
+}
+
+.tx-table tbody td {
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  vertical-align: middle;
+}
+
+/* ── TABLE CELL ELEMENTS ── */
+.order-id {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: #aaa;
+  background: #f5f5f5;
+  padding: 3px 8px;
+  border-radius: 5px;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, color 0.2s;
+  display: inline-block;
+}
+
+tr:hover .order-id {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.customer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+tr:hover .avatar {
+  transform: scale(1.18);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product-name {
+  font-weight: 500;
+  color: #222;
+  transition: color 0.15s;
+}
+
+tr:hover .product-name { color: #000; }
+
+.deleted-tag {
+  font-size: 0.7rem;
+  color: #e57373;
+  background: #fff3f3;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #fdd;
+}
+
+.qty-chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  background: #f0f0f0;
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: #555;
+  display: inline-block;
+  min-width: 32px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+tr:hover .qty-chip {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.amount-val {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: #444;
+  transition: color 0.15s, font-weight 0.15s;
+}
+
+tr:hover .amount-val {
+  color: #111;
+  font-weight: 700;
+}
+
+.date-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: #bbb;
+  transition: color 0.15s;
+}
+
+tr:hover .date-val { color: #888; }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
