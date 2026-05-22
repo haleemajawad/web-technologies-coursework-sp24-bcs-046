@@ -1,9 +1,9 @@
 // Seed script for the Sapphire assignment 4 project.
 // This file inserts a set of example products into MongoDB for local testing.
 const mongoose = require("mongoose");
-
+require("dotenv").config();
 const Product = require("./models/product"); // import the Mongoose model
-mongoose.connect("mongodb://localhost:27017/sapphire")
+mongoose.connect(MONGO_URI)
   .then(() => console.log("Connected!"))
   .catch((err) => console.log(err));
 
